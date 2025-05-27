@@ -1,0 +1,52 @@
+<div class="rally-register-container">
+    <div class="rally-card p-4 shadow">
+        <div class="rally-header text-center mb-4">
+            <h3 class="rally-title mb-3" style="text-align: center;">Iniciar Sesión</h3>
+            <div class="camera-icon">
+                <i class="pi pi-camera"></i>
+            </div>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <!-- Correo -->
+            <div class="mb-3">
+                <label for="correo" class="rally-label">Correo:</label>
+                <div class="input-group">                   
+                    <input pInputText id="correo" class="form-control rally-input" formControlName="correo"
+                        type="email" />
+                </div>
+                @if(form.controls["correo"].invalid && (form.controls["correo"].dirty ||
+                form.controls["correo"].touched)){
+                @if(form.controls["correo"].errors?.["required"]){
+                <div class="rally-alert">El Correo es obligatorio</div>
+                }
+                @if(form.controls["correo"].errors?.["email"]){
+                <div class="rally-alert">Ingresa un correo válido</div>
+                }
+                }
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3">
+                <label for="contrasena" class="rally-label">Contraseña:</label>
+                <div class="input-group">
+                    <input pInputText id="contrasena" class="form-control rally-input" formControlName="contrasena"
+                        type="password" />
+                </div>
+                @if(form.controls["contrasena"].invalid && (form.controls["contrasena"].dirty ||
+                form.controls["contrasena"].touched)){
+                @if(form.controls["contrasena"].errors?.["required"]){
+                <div class="rally-alert">La Contraseña es obligatoria</div>
+                }
+                }
+            </div>
+
+            <!-- Enlace a registro -->
+            <div class="mb-3 text-center">
+                <a routerLink="/register" class="text-decoration-none">¿No tienes cuenta? Regístrate</a>
+            </div>
+
+            <button pButton type="submit" label="Acceder" class="w-100 rally-button" [disabled]="form.invalid"></button>
+        </form>
+    </div>
+</div>

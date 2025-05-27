@@ -1,0 +1,58 @@
+<div class="container">
+    <h3>Formulario Nueva foto</h3>
+    <br>
+    <form class="form-horizontal" [formGroup]="form" (ngSubmit)="subirFoto()">
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Título</span>
+                <div class="form-floating is-invalid">
+                    <input type="text" class="form-control" required formControlName="titulo" placeholder="Título">
+                    <label>Ingrese el título</label>
+                </div>
+            </div>
+            <div *ngIf="form.controls['titulo'].invalid && (form.controls['titulo'].dirty || form.controls['titulo'].touched)">
+                <div *ngIf="form.controls['titulo'].errors?.['required']" class="alert alert-danger">
+                    El título es obligatorio
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Descripción</span>
+                <div class="form-floating is-invalid">
+                    <textarea class="form-control" required formControlName="descripcion" placeholder="Descripción"></textarea>
+                    <label>Ingrese la descripción</label>
+                </div>
+            </div>
+            <div *ngIf="form.controls['descripcion'].invalid && (form.controls['descripcion'].dirty || form.controls['descripcion'].touched)">
+                <div *ngIf="form.controls['descripcion'].errors?.['required']" class="alert alert-danger">
+                    La descripción es obligatoria
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Imagen</span>
+                <div class="form-floating is-invalid">
+                    <input type="file" class="form-control" id="imagen" accept="image/*" (change)="onFileSelected($event)">
+                    <label for="imagen">Seleccione una imagen</label>
+                </div>
+            </div>
+            <div *ngIf="fotoSeleccionado" class="mt-2 text-center">
+                <img [src]="imagen64" alt="Vista previa" width="150" class="img-thumbnail" />
+            </div>
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid || !fotoSeleccionado">{{textoBoton}} Foto</button>
+        <span> . </span>
+        <a role="button" class="btn btn-secondary" (click)="cancelarFormulario()">Cancelar</a>
+    </form>
+</div>

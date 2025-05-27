@@ -1,0 +1,34 @@
+<div class="app">
+  <div class="container">
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="assets/img/l1.webp" alt="logo">
+        <h1>RALLY FOTOGRAFICO DE COCHES</h1>
+      </div>
+      <div class="menu-container">
+        <p-menubar [model]="menu"></p-menubar>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/img/l1.webp" alt="logo" />
+        <span>Rally Fotográfico de Coches</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Aviso Legal</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Contacto</a>
+      </div>
+      <div class="footer-copy">
+        &copy; {{ currentYear }} Rally Fotográfico de Coches. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+</div>

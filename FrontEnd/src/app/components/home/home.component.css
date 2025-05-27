@@ -1,0 +1,78 @@
+/* Contenedor centrado, con espacio igual a ambos lados */
+.carousel-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  margin-bottom: auto;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+
+/* Imagen alineada y escalada */
+.carousel-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botón centrado dentro del carrusel */
+.participate-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: 1.8rem;
+  padding: 1rem 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .carousel-container {
+    height: 60vw; /* Mejor que 60vh para evitar huecos en móviles */
+    min-height: 220px;
+    max-height: 350px;
+    width: 100vw;
+    margin-bottom: 0;
+  }
+  .participate-btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-container {
+    height: 55vw;
+    min-height: 180px;
+    max-height: 260px;
+    width: 100vw;
+    margin-bottom: 0;
+  }
+  .carousel-image-wrapper {
+    padding: 0 2vw;
+    height: 100%;
+  }
+  .carousel-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .participate-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    width: auto;
+    max-width: 90vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+}

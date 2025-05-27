@@ -1,0 +1,10 @@
+.row {
+  row-gap: 2rem; /* Ajusta el valor según el espacio que desees */
+}
+
+.p-button, .p-button .p-button-label {
+  justify-content: center !important;
+  text-align: center !important;
+  align-items: center !important;
+  display: flex !important;
+}

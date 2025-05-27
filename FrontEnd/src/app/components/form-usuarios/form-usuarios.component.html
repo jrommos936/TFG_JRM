@@ -1,0 +1,95 @@
+<div class="container">
+    <h3>Formulario Nuevo Owner</h3>
+    <br>
+    <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Nombre</span>
+                <div class="form-floating is-invalid">
+                    <input type="text" class="form-control" required formControlName="nombre" placeholder="Nombre">
+                    <label>Ingrese su nombre</label>
+                </div>
+            </div>
+            @if(form.controls["nombre"].invalid && (form.controls["nombre"].dirty || form.controls["nombre"].touched)){
+            @if(form.controls["nombre"].errors?.["required"]){
+            <div class="alert alert-danger">
+                El Nombre es obligatorio
+            </div>
+            }
+            }
+        </div>
+
+        <br><br>
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Correo</span>
+                <div class="form-floating is-invalid">
+                    <input type="text" class="form-control" required formControlName="correo" placeholder="correo">
+                    <label>Ingrese su correo</label>
+                </div>
+            </div>
+            @if(form.controls["correo"].invalid && (form.controls["correo"].dirty || form.controls["correo"].touched)){
+            @if(form.controls["correo"].errors?.["required"]){
+            <div class="alert alert-danger">
+                El correo es obligatorio
+            </div>
+            }
+            }
+        </div>
+
+        <br><br>
+
+        @if(form.value.id == -1){
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Contraseña</span>
+                <div class="form-floating is-invalid">
+                    <input type="password" class="form-control" formControlName="contrasena"
+                        placeholder="contrasena">
+                    <label>Ingrese su contraseña</label>
+                </div>
+            </div>
+            @if(form.controls["contrasena"].invalid && (form.controls["contrasena"].dirty ||
+            form.controls["contrasena"].touched)){
+            @if(form.controls["contrasena"].errors?.["required"]){
+            <div class="alert alert-danger">
+                La contraseña es obligatoria
+            </div>
+            }
+            }
+        </div>
+
+        <br><br>
+        }
+
+
+
+        <div class="mb-3">
+            <div class="input-group">
+                <span class="input-group-text">Rol</span>
+                <div class="form-floating is-invalid">
+                    <select class="form-control" required formControlName="rol" id="rol">
+                        <option value="" disabled selected>Seleccione un rol</option>
+                        <option value="admin">Admin</option>
+                        <option value="participante">Participante</option>
+                        <option value="usuario">Usuario</option>
+                    </select>
+                    <label for="rol">Seleccione un rol</label>
+                </div>
+            </div>
+            @if(form.controls["rol"].invalid && (form.controls["rol"].dirty || form.controls["rol"].touched)){
+            @if(form.controls["rol"].errors?.["required"]){
+            <div class="alert alert-danger">
+                El rol es obligatorio
+            </div>
+            }
+            }
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">{{textoBoton}}</button>
+        <a role="button" class="btn btn-secondary" (click)="cancelarFormulario(usuario.id)">Cancelar</a>
+    </form>
+</div>

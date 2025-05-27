@@ -1,0 +1,127 @@
+/* home.component.css */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-container img {
+  height: 80px;
+  width: auto;
+  max-width: 100%;
+  display: block; /* Esto asegura que la imagen se muestre correctamente */
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Estilo para el menú */
+.menu-container {
+  margin-left: auto;
+  width: auto; /* O puedes eliminar esta línea */
+  text-size-adjust: 100%;
+  display: flex; /* Asegura que los items estén en línea */
+  gap: 16px;     /* Espacio entre los labels, ajusta si quieres */
+}
+
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #fefefe 0%, #6995eb 100%);
+  color: #222;
+  padding: 30px 0 10px 0;
+  margin-top: 0;
+  box-shadow: 0 -2px 10px rgba(105,149,235,0.08);
+  font-size: 1rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.footer-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #3b5fa8;
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* El contenido arriba */
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    padding: 0 10px;
+    font-size: 0.95rem;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+

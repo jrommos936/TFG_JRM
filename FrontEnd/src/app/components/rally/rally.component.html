@@ -1,0 +1,99 @@
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Fotos Aceptadas</h2>
+    @if (isLoggedIn && esParticpante) {
+      <button pButton type="button" label="Añadir Foto" icon="pi pi-plus" class="p-button-success" routerLink="rally-add/-1"></button>
+    }
+  </div>
+  <div class="row">
+    @if (fotos.length === 0) {
+      <div class="col-12 text-center">
+        <p>No hay fotos aceptadas.</p>
+      </div>
+    } @else {
+      @for (foto of fotos; track $index) {
+        <div class="col-md-4 mb-4 d-flex" style="height: 420px;">
+          <div style="width:100%; height: 100%; display: flex; flex-direction: column; text-align: center;">
+            <p-card [header]="foto.titulo" [subheader]="'Usuario -->  '+foto.nombre">
+              <div style="display: flex; flex-direction: column; height: 340px;">
+                <div class="d-flex justify-content-center align-items-center mb-3"
+                     style="height: 200px; background: #f4f4f4; cursor: pointer;"
+                     (click)="showImage(foto.archivo)">
+                  @if (foto.archivo) {
+                    <img 
+                      [src]="foto.archivo" 
+                      alt="{{ foto.titulo }}" 
+                      class="img-fluid"
+                      style="object-fit: contain; height: 100%; width: 100%;"
+                    >
+                  } @else {
+                    <i class="pi pi-image" style="font-size: 4rem; color: #bbb;"></i>
+                  }
+                </div>
+                <div style="flex:1 1 0; max-height: 120px; overflow: auto; word-break: break-word;">
+                  <p class="mb-0">{{ foto.descripcion }}</p>
+                </div>
+              </div>
+            </p-card>
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  <p-dialog [(visible)]="display" [modal]="true" [closable]="true" [style]="{width: 'auto'}" (onHide)="closeDialog()" [contentStyle]="{'text-align':'center'}">
+    @if (selectedImage) {
+      <img [src]="selectedImage" alt="Foto ampliada" style="max-width: 90vw; max-height: 80vh; object-fit: contain;">
+    }
+  </p-dialog>
+</div>
+
+<br>
+
+@if (esAdmin) {
+  <div class="container my-4">
+    <h2>Fotos Pendientes</h2>
+    <div class="row">
+      @if (fotosPendientes.length === 0) {
+        <div class="col-12 text-center">
+          <p>No hay fotos pendientes.</p>
+        </div>
+      } @else {
+        @for (foto of fotosPendientes; track $index) {
+          <div class="col-md-4 mb-4 d-flex" style="height: 420px;">
+            <div style="width:100%; height: 100%; display: flex; flex-direction: column; text-align: center;">
+              <p-card [header]="foto.titulo" [subheader]="'Usuario -->  '+foto.nombre">
+                <div style="display: flex; flex-direction: column; height: 340px;">
+                  <div class="d-flex justify-content-center align-items-center mb-3"
+                       style="height: 200px; background: #f4f4f4; cursor: pointer;"
+                       (click)="showImage(foto.archivo)">
+                    @if (foto.archivo) {
+                      <img 
+                        [src]="foto.archivo"
+                        alt="{{ foto.titulo }}"
+                        class="img-fluid"
+                        style="object-fit: contain; height: 100%; width: 100%;">
+                    } @else {
+                      <i class="pi pi-image" style="font-size: 4rem; color: #bbb;"></i>
+                    }
+                  </div>
+                  <div style="flex:1 1 0; max-height: 80px; overflow: auto; word-break: break-word;">
+                    <p class="mb-0">{{ foto.descripcion }}</p>
+                  </div>
+                  <div class="mt-2 d-flex justify-content-center gap-2">
+                    <button pButton type="button" icon="pi pi-check" class="p-button-success p-button-sm"
+                      (click)="aceptarFoto(foto)">Aceptar</button>
+                    <button pButton type="button" icon="pi pi-times" class="p-button-warning p-button-sm"
+                      (click)="rechazarFoto(foto)">Rechazar</button>
+                    <button pButton type="button" icon="pi pi-trash" class="p-button-danger p-button-sm"
+                      (click)="eliminarFoto(foto)">Eliminar</button>
+                  </div>
+                </div>
+              </p-card>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+}

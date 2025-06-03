@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Fotos } from '../models/fotos';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RallyService {
-  private apiUrl = 'http://localhost/clase/TFG_JRM/BackEnd/subirFoto.php';
+  private apiUrl = 'https://rallycochesjrm.com/BackEnd/subirFoto.php';
   private url = environment.API_URL;
-  private urlmod = 'http://localhost/clase/TFG_JRM/BackEnd/modificarFoto.php';
+  private urlmod = 'https://rallycochesjrm.com/BackEnd/modificarFoto.php';
 
   constructor(private http: HttpClient) { }
 

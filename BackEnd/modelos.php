@@ -11,7 +11,7 @@ class Modelo
 	{
 		try {
 			$opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
-			$this->pdo = new PDO('mysql:host=localhost;dbname=rally_fotografico', 'root', '', $opciones);
+			$this->pdo = new PDO('mysql:host=PMYSQL189.dns-servicio.com:3306;dbname=10943070_rally_fotografico', 'root123', 'zf2#4C97l', $opciones);
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch (Exception $e) {
 			die($e->getMessage());
@@ -100,7 +100,7 @@ class Modelo
 	public function ListarFotosAceptadas()
 	{
 		try {
-			$sql = "SELECT u.nombre, f.titulo, f.descripcion, f.archivo FROM fotos f JOIN usuarios u ON f.usuario_id = u.id WHERE estado = 'aceptada'";
+			$sql = "SELECT f.id, u.nombre, f.titulo, f.descripcion, f.archivo FROM fotos f JOIN usuarios u ON f.usuario_id = u.id WHERE estado = 'aceptada'";
 			$stm = $this->pdo->prepare($sql);
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_ASSOC);

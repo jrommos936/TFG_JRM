@@ -16,5 +16,7 @@
     </ng-template>
   </p-carousel>
 
-  <button class="btn btn-primary participate-btn">Participe Aquí</button>
+  @if(!isLoggedIn){
+  <button class="btn btn-primary participate-btn" routerLink="/login">Participe Aquí</button>
+  }
 </div>

@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$db = 'rally_fotografico';
-$user = 'root';
-$pass = '';
+$host = 'PMYSQL189.dns-servicio.com:3306';
+$db = '10943070_rally_fotografico';
+$user = 'root123';
+$pass = 'zf2#4C97l';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

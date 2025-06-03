@@ -37,15 +37,14 @@ export class RallyComponent {
     // Obtener usuario y comprobar si es admin
     this.isLoggedIn = !!localStorage.getItem('token');
 
-    if (this.isLoggedIn) {
-      this.esParticpante = true;
-    }
     const usuarioStr = localStorage.getItem('rol');
     if (usuarioStr == 'admin') {
       this.esAdmin = true;
       if (this.esAdmin) {
         this.cargarFotosPendientes();
       }
+    } else if (usuarioStr == 'participante') {
+      this.esParticpante = true;
     }
   }
 
@@ -84,6 +83,9 @@ export class RallyComponent {
   eliminarFoto(foto: Fotos) {
     this.rallyService.eliminarFoto(foto.id).subscribe(() => {
       this.cargarFotosPendientes();
+      this.rallyService.listarFotosAceptadas().subscribe({
+        next: (data) => this.fotos = data
+      });
     });
   }
 

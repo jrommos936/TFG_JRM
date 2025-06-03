@@ -7,6 +7,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { FormUsuariosComponent } from './components/form-usuarios/form-usuarios.component';
 import { FormRallyComponent } from './components/form-rally/form-rally.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { NormativaComponent } from './components/normativa/normativa.component';
 
 export const routes: Routes = [
     {
@@ -32,5 +33,8 @@ export const routes: Routes = [
     },
     {
         path: 'perfil', component:PerfilComponent
+    },
+    {
+        path: 'normativa', component: NormativaComponent
     }
 ];

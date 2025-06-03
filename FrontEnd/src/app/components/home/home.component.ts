@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  isLoggedIn: boolean = false;
+
   images: string[] = [
     'assets/img/coche1.webp',
     'assets/img/coche2.webp',
@@ -22,4 +25,8 @@ export class HomeComponent {
       numScroll: 1
     }
   ];
+
+  constructor() {
+    this.isLoggedIn = !!localStorage.getItem('token');
+  }
 }

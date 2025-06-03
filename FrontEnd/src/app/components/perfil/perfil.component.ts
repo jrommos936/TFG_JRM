@@ -123,4 +123,10 @@ export class PerfilComponent implements OnInit {
         }
       });
   }
+
+  eliminarFoto(foto: Fotos) {
+    this.rallyService.eliminarFoto(foto.id).subscribe(() => {
+      this.cargarFotosPorUsuario(this.usuario?.id || 0);
+    });
+  }
 }

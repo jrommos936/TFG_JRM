@@ -6,155 +6,135 @@
 
     <div class="card-body">
       @if (cargando) {
-        <div class="loading-spinner">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Cargando...</span>
-          </div>
+      <div class="loading-spinner">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Cargando...</span>
         </div>
+      </div>
       }
 
       @if (!cargando && usuario) {
-        <div class="perfil-info">
-          <form [formGroup]="perfilForm" (ngSubmit)="guardarCambios()">
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="nombre" 
-                formControlName="nombre"
-                [readOnly]="!editando"
-                [ngClass]="{'is-invalid': perfilForm.get('nombre')?.invalid && (perfilForm.get('nombre')?.dirty || perfilForm.get('nombre')?.touched)}"
-              >
-              @if (perfilForm.get('nombre')?.invalid && (perfilForm.get('nombre')?.dirty || perfilForm.get('nombre')?.touched)) {
-                <div class="invalid-feedback">
-                  <div *ngIf="perfilForm.get('nombre')?.errors?.['required']">El nombre es requerido</div>
-                  <div *ngIf="perfilForm.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</div>
-                </div>
-              }
+      <div class="perfil-info">
+        <form [formGroup]="perfilForm" (ngSubmit)="guardarCambios()">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" [readOnly]="!editando"
+              [ngClass]="{'is-invalid': perfilForm.get('nombre')?.invalid && (perfilForm.get('nombre')?.dirty || perfilForm.get('nombre')?.touched)}">
+            @if (perfilForm.get('nombre')?.invalid && (perfilForm.get('nombre')?.dirty ||
+            perfilForm.get('nombre')?.touched)) {
+            <div class="invalid-feedback">
+              <div *ngIf="perfilForm.get('nombre')?.errors?.['required']">El nombre es requerido</div>
+              <div *ngIf="perfilForm.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres
+              </div>
             </div>
-
-            <div class="mb-3">
-              <label for="correo" class="form-label">Correo electrónico</label>
-              <input 
-                type="email" 
-                class="form-control" 
-                id="correo" 
-                formControlName="correo"
-                [readOnly]="!editando"
-                [ngClass]="{'is-invalid': perfilForm.get('correo')?.invalid && (perfilForm.get('correo')?.dirty || perfilForm.get('correo')?.touched)}"
-              >
-              @if (perfilForm.get('correo')?.invalid && (perfilForm.get('correo')?.dirty || perfilForm.get('correo')?.touched)) {
-                <div class="invalid-feedback">
-                  <div *ngIf="perfilForm.get('correo')?.errors?.['required']">El correo es requerido</div>
-                  <div *ngIf="perfilForm.get('correo')?.errors?.['email']">Ingrese un correo válido</div>
-                </div>
-              }
-            </div>
-
-            <div class="mb-3">
-              <label for="rol" class="form-label">Rol</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="rol" 
-                formControlName="rol"
-                readonly
-              >
-            </div>
-
-            @if (mensajeExito) {
-              <div class="alert alert-success">{{ mensajeExito }}</div>
             }
-            @if (mensajeError) {
-              <div class="alert alert-danger">{{ mensajeError }}</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="correo" formControlName="correo" [readOnly]="!editando"
+              [ngClass]="{'is-invalid': perfilForm.get('correo')?.invalid && (perfilForm.get('correo')?.dirty || perfilForm.get('correo')?.touched)}">
+            @if (perfilForm.get('correo')?.invalid && (perfilForm.get('correo')?.dirty ||
+            perfilForm.get('correo')?.touched)) {
+            <div class="invalid-feedback">
+              <div *ngIf="perfilForm.get('correo')?.errors?.['required']">El correo es requerido</div>
+              <div *ngIf="perfilForm.get('correo')?.errors?.['email']">Ingrese un correo válido</div>
+            </div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="rol" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="rol" formControlName="rol" readonly>
+          </div>
+
+          @if (mensajeExito) {
+          <div class="alert alert-success">{{ mensajeExito }}</div>
+          }
+          @if (mensajeError) {
+          <div class="alert alert-danger">{{ mensajeError }}</div>
+          }
+
+          <div class="button-group">
+            @if (!editando) {
+            <button type="button" class="btn btn-primary" (click)="toggleEdicion()">
+              Editar Perfil
+            </button>
             }
 
-            <div class="button-group">
-              @if (!editando) {
-                <button 
-                  type="button" 
-                  class="btn btn-primary"
-                  (click)="toggleEdicion()"
-                >
-                  Editar Perfil
-                </button>
-              }
-
-              @if (editando) {
-                <div class="d-flex gap-2">
-                  <button type="submit" class="btn btn-success" [disabled]="perfilForm.invalid || cargando">
-                    <span *ngIf="cargando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Guardar Cambios
-                  </button>
-                  <button type="button" class="btn btn-secondary" (click)="toggleEdicion()" [disabled]="cargando">
-                    Cancelar
-                  </button>
-                </div>
-              }
+            @if (editando) {
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-success" [disabled]="perfilForm.invalid || cargando">
+                <span *ngIf="cargando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Guardar Cambios
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="toggleEdicion()" [disabled]="cargando">
+                Cancelar
+              </button>
             </div>
-          </form>
+            }
+          </div>
+        </form>
 
-          
-        </div>
+
+      </div>
       }
     </div>
   </div>
 </div>
 
-  <div class="mt-4" style="max-width: 1200px; margin: auto;">
-    <h3 style="text-align: center;">Mis Fotos</h3>
-    <br>
-    <div class="row">
-      @if (fotosUsuario.length === 0) {
-        <div class="col-12 text-center">
-          <p>No has subido ninguna foto.</p>
-        </div>
-      } @else {
-        @for (foto of fotosUsuario; track $index) {
-          <div id="card" class="col-12 col-sm-6 col-md-4 mb-4" style="height: 420px;">
-            <div class="flex-fill d-flex flex-column" style="height: 100%; position: relative;">
-              <!-- Botón de editar solo si el estado es pendiente -->
-              @if (foto.estado === 'pendiente') {
-                <button 
-                  type="button" 
-                  class="btn btn-light btn-sm"
-                  style="position: absolute; top: 10px; right: 10px; z-index: 2;"
-                  title="Editar foto" routerLink="../rally/rally-add/{{ foto.id }}"
-                >
-                  <i class="pi pi-pencil"></i>
-                  Editar
-                </button>
-              }
-              <p-card [header]="foto.titulo" [subheader]="'Estado--> ' + foto.estado">
-                <div>
-                  <div class="d-flex justify-content-center align-items-center mb-3"
-                       style="height: 260px; background: #f4f4f4; cursor: pointer;"
-                       (click)="selectedImage = foto.archivo; display = true">
-                    @if (foto.archivo) {
-                      <img 
-                        [src]="foto.archivo" 
-                        alt="{{ foto.titulo }}" 
-                        class="img-fluid"
-                        style="object-fit: contain; height: 100%; width: 100%;">
-                    } @else {
-                      <i class="pi pi-image" style="font-size: 4rem; color: #bbb;"></i>
-                    }
-                  </div>
-                  <div style="flex:1 1 0; max-height: 80px; overflow: auto; word-break: break-word;">
-                    <p class="mb-0">{{ foto.descripcion }}</p>
-                  </div>
-                </div>
-              </p-card>
-            </div>
-          </div>
-        }
-      }
+<div class="mt-4 tarjetas-container" style="max-width: 1600px; margin: auto;">
+  <h3 style="text-align: center;">Mis Fotos</h3>
+  <br>
+  <div class="row">
+    @if (fotosUsuario.length === 0) {
+    <div class="col-12 text-center">
+      <p>No has subido ninguna foto.</p>
     </div>
+    } @else {
+    @for (foto of fotosUsuario; track $index) {
+    <div id="card" class="col-12 col-sm-6 col-md-4 mb-4 card-foto">
+      <div class="flex-fill d-flex flex-column" style="height: 100%; position: relative;">
+        @if (foto.estado === 'pendiente' || foto.estado === 'rechazada') {
+        <button type="button" class="btn btn-light btn-sm"
+          style="position: absolute; top: 10px; right: 10px; z-index: 2;" title="Editar foto"
+          routerLink="../rally/rally-add/{{ foto.id }}">
+          <i class="pi pi-pencil"></i>
+          Editar
+        </button>
+        }
+        <button type="button" class="btn btn-light btn-sm"
+          style="position: absolute; top: 10px; left: 10px; z-index: 2;" title="Eliminar foto"
+          (click)="eliminarFoto(foto)">
+          <i class="pi pi-pencil"></i>
+          Eliminar
+        </button>
 
-    <p-dialog [(visible)]="display" [modal]="true" [closable]="true" [style]="{width: 'auto'}" (onHide)="display = false" [contentStyle]="{'text-align':'center'}">
-      @if (selectedImage) {
-        <img [src]="selectedImage" alt="Foto ampliada" style="max-width: 90vw; max-height: 80vh; object-fit: contain;">
-      }
-    </p-dialog>
+        <p-card [header]="foto.titulo" [subheader]="'Estado--> ' + foto.estado" class="h-100 d-flex flex-column">
+          <div class="d-flex justify-content-center align-items-center mb-3"
+            style="height: 260px; background: #f4f4f4; cursor: pointer;"
+            (click)="selectedImage = foto.archivo; display = true">
+            @if (foto.archivo) {
+            <img [src]="foto.archivo" alt="{{ foto.titulo }}" class="img-fluid"
+              style="object-fit: contain; height: 100%; width: 100%;">
+            } @else {
+            <i class="pi pi-image" style="font-size: 4rem; color: #bbb;"></i>
+            }
+          </div>
+          <div class="descripcion-texto">
+            <p class="mb-0">{{ foto.descripcion }}</p>
+          </div>
+        </p-card>
+      </div>
+    </div>
+    }
+    }
   </div>
+
+  <p-dialog [(visible)]="display" [modal]="true" [closable]="true" [style]="{width: 'auto'}" (onHide)="display = false"
+    [contentStyle]="{'text-align':'center'}">
+    @if (selectedImage) {
+    <img [src]="selectedImage" alt="Foto ampliada" style="max-width: 90vw; max-height: 80vh; object-fit: contain;">
+    }
+  </p-dialog>
+</div>

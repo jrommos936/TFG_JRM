@@ -40,7 +40,7 @@ function modificarFoto($conn, $foto) {
       $nombreArchivo = $titulo . "_" . $id . "." . $extension;
       $ruta = $carpeta . $nombreArchivo;
       file_put_contents($ruta, $decoded);
-      $rutaGuardada = "http://localhost/clase/TFG_JRM/BackEnd/uploads/" . $nombreArchivo;
+      $rutaGuardada = "https://rallycochesjrm.com/BackEnd/uploads/" . $nombreArchivo;
     } else {
       // Si no es base64, se asume que es una URL ya existente
       $rutaGuardada = $base64;

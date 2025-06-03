@@ -118,3 +118,50 @@
   width: 500px;
   text-align: center;
 }
+
+.tarjetas-container {
+  padding-bottom: 120px; /* espacio para evitar que el footer tape las tarjetas */
+}
+
+/* Estilo uniforme para cada tarjeta de foto */
+.card-foto {
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+#card {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+
+#card .p-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#card .p-card .p-card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.descripcion-texto {
+  max-height: 80px;
+  overflow: auto;
+  word-break: break-word;
+  flex-grow: 1;
+}
+
+/* Separación lateral para tarjetas en portátiles y pantallas grandes */
+@media (min-width: 768px) {
+  .tarjetas-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+

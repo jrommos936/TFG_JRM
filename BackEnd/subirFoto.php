@@ -46,7 +46,7 @@ function subirFoto($conn, $data) {
     $ruta = $carpeta . $nombreArchivo;
     file_put_contents($ruta, $decoded);
 
-    $rutaGuardada = "http://localhost/clase/TFG_JRM/BackEnd/uploads/" . $nombreArchivo;
+    $rutaGuardada = "https://rallycochesjrm.com/BackEnd/uploads/" . $nombreArchivo;
 
     $sql = "INSERT INTO fotos (usuario_id, titulo, descripcion, archivo) 
             VALUES (:usuario_id, :titulo, :descripcion, :archivo)";

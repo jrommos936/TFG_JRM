@@ -15,7 +15,7 @@ export class AppComponent {
   currentYear: number = new Date().getFullYear();
   isLoggedIn: boolean = false;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.updateMenu();
@@ -43,13 +43,11 @@ export class AppComponent {
   }
 
   cerrarSesion() {
-    fetch('http://localhost/clase/TFG_JRM/BackEnd/cerrar_sesion.php', { method: 'POST', credentials: 'include' })
-      .finally(() => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('rol');
-        alert('Sesión cerrada correctamente');
-        this.updateMenu();
-        window.location.href = '/'; // Redirige a inicio
-      });
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    alert('Sesión cerrada correctamente');
+    this.updateMenu();
+    window.location.href = '/'; // Redirige a inicio
+
   }
 }

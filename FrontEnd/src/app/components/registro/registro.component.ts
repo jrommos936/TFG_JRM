@@ -42,12 +42,12 @@ export class RegistroComponent {
 
   if (this.form.valid) {
     this.peti.registro(this.form.value.nombre, this.form.value.correo, this.form.value.contrasena, rol).subscribe({
-      next: (response) => {
-        alert(response || 'Usuario registrado con éxito');
+      next: () => {
+        alert('Usuario registrado con éxito');
         this.ruta.navigate(['/login']);
       },
       error: (err) => {
-        alert(err.error.error || 'Error desconocido al registrar el usuario');
+        alert('Error desconocido al registrar el usuario');
       }
     });
   } else {

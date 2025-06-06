@@ -40,6 +40,7 @@ export class RallyComponent {
     const usuarioStr = localStorage.getItem('rol');
     if (usuarioStr == 'admin') {
       this.esAdmin = true;
+      this.esParticpante = true;
       if (this.esAdmin) {
         this.cargarFotosPendientes();
       }

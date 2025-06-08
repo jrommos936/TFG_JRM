@@ -31,7 +31,7 @@ export class LoginComponent {
     private ruta: Router,
     private router: ActivatedRoute,
     private fb: FormBuilder,
-    private appComponent: AppComponent // Inyecta el AppComponent
+    private appComponent: AppComponent 
   ) {
     this.form = this.fb.group({
       correo: this.fb.control('', [Validators.required, Validators.email]),

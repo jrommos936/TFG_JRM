@@ -47,7 +47,7 @@ export class AppComponent {
     localStorage.removeItem('rol');
     alert('Sesión cerrada correctamente');
     this.updateMenu();
-    window.location.href = '/'; // Redirige a inicio
+    window.location.href = '/';
 
   }
 }

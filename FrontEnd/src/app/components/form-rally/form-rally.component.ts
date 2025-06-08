@@ -53,11 +53,8 @@ export class FormRallyComponent {
     this.fImagen = (event.target as HTMLInputElement).files![0];
 
     var reader = new FileReader();
-    reader.onloadend = () => {  // Debe ser una función arrow para que conserve el ámbito (y encuente a this.imagen64)
-      // console.log('contenido: ', reader.result);
-      // Mostramos la imagen en el elemento img:
+    reader.onloadend = () => {  
       this.imagen64 = <string>reader.result;
-      // this.imagen64 = reader.result as string;
     }
     this.fotoSeleccionado = true;
     reader.readAsDataURL(this.fImagen);

@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, PATCH, OPTIONS');
 header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization");
 header("Content-Type: application/json; charset=UTF-8");
 
-include 'conexion.php'; // conexión PDO
+include 'conexion.php'; 
 
 $data = json_decode(file_get_contents("php://input"));
 

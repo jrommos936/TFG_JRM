@@ -19,7 +19,7 @@ require_once 'modelos.php';
 $modelo = new Modelo();
 
 //  Con esta línea recogemos los datos (en formato JSON), enviados por el cliente:
-$datos = file_get_contents('php://input');  //  $datos es un string, y no un objeto php
+$datos = file_get_contents('php://input');  
 //  Lo convertimos a un objeto php:
 $objeto = json_decode($datos);
 
@@ -38,7 +38,6 @@ if ($objeto != null) {
         case "AnadeUsuario":
             if ($modelo->AnadeUsuario($objeto->usuario))
                 print '{"result":"OK"}';
-            //		print json_encode($modelo->ListarOwners());
             else
                 print '{"result":"FAIL"}';
             break;

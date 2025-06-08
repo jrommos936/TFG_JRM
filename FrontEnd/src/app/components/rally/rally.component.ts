@@ -3,7 +3,7 @@ import { Fotos } from '../../models/fotos';
 import { RallyService } from '../../services/rally.service';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog'; // Importa DialogModule
+import { DialogModule } from 'primeng/dialog'; 
 import { Usuario } from '../../models/usuario';
 import { RouterLink } from '@angular/router';
 
@@ -28,13 +28,11 @@ export class RallyComponent {
   constructor(private rallyService: RallyService) {}
 
   ngOnInit(): void {
-    // Cargar fotos aceptadas
     this.rallyService.listarFotosAceptadas().subscribe({
       next: (data) => this.fotos = data,
       error: (err) => console.error(err)
     });
 
-    // Obtener usuario y comprobar si es admin
     this.isLoggedIn = !!localStorage.getItem('token');
 
     const usuarioStr = localStorage.getItem('rol');

@@ -7,10 +7,8 @@ header('Content-Type: application/json; charset=UTF-8');
 session_start();
 require 'conexion.php';
 
-// Obtener el contenido del cuerpo de la solicitud
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Si no se pudo decodificar el JSON, intentar con $_POST
 if ($data === null) {
     $data = $_POST;
 }
@@ -27,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $usuario['contrasena'])) {
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['correo'] = $correo;
-            // Devuelve el id como token (puedes usar JWT si lo prefieres)
+            // Devuelve el id como token 
             echo json_encode([
                 "success" => true,
                 "message" => "Inicio de sesión correcto. ¡Bienvenido!",
-                "token" => $usuario['id'], // <-- Este es el token que guarda el frontend
+                "token" => $usuario['id'], 
                 "rol" => $usuario['rol']
             ]);
         } else {

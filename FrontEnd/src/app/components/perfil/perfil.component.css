@@ -120,10 +120,9 @@
 }
 
 .tarjetas-container {
-  padding-bottom: 120px; /* espacio para evitar que el footer tape las tarjetas */
+  padding-bottom: 120px; 
 }
 
-/* Estilo uniforme para cada tarjeta de foto */
 .card-foto {
   height: 420px;
   display: flex;
@@ -156,7 +155,6 @@
   flex-grow: 1;
 }
 
-/* Separación lateral para tarjetas en portátiles y pantallas grandes */
 @media (min-width: 768px) {
   .tarjetas-container {
     padding-left: 32px;

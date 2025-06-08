@@ -1,4 +1,3 @@
-/* home.component.css */
 .app {
   display: flex;
   flex-direction: column;
@@ -110,7 +109,7 @@ h1 {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* El contenido arriba */
+  justify-content: flex-start; 
 }
 
 @media (max-width: 600px) {

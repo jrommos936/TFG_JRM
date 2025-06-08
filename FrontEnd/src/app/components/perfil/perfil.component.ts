@@ -25,8 +25,8 @@ export class PerfilComponent implements OnInit {
   mensajeExito = '';
   mensajeError = '';
   fotosUsuario: Fotos[] = [];
-  display = false; // Para el diálogo de imagen ampliada
-  selectedImage: string | null = null; // Imagen seleccionada para ampliar
+  display = false; 
+  selectedImage: string | null = null; 
 
   constructor(
     private perfilService: PerfilService,
@@ -58,7 +58,6 @@ export class PerfilComponent implements OnInit {
             correo: usuario.correo,
             rol: usuario.rol
           });
-          // Llama a listarFotosPorUsuario después de obtener el usuario
           if (usuario && usuario.id) {
             this.cargarFotosPorUsuario(usuario.id);
           }
@@ -87,7 +86,6 @@ export class PerfilComponent implements OnInit {
     this.mensajeError = '';
     
     if (!this.editando) {
-      // Restablecer valores originales al cancelar edición
       this.perfilForm.patchValue({
         nombre: this.usuario?.nombre,
         correo: this.usuario?.correo
